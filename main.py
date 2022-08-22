@@ -1,4 +1,3 @@
-import enum
 from random import randrange
 
 
@@ -60,7 +59,8 @@ def deal_cards(shuffled_deck, num_of_players):
 
 def display_player_hands(players):
     for player in players:
-        print(f"\n{player['name']} \nHand: {player['cards']} \nNumber of Pairs: {player['pairs']}")
+        print(
+            f"\n{player['name']} \nHand: {player['cards']} \nNumber of Pairs: {player['pairs']}")
 
 
 def start_game(number_of_players, rounds_to_play):
