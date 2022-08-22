@@ -1,3 +1,4 @@
+from random import randrange
 
 
 def generate_deck():
@@ -11,5 +12,16 @@ def generate_deck():
     return new_deck
 
 
+def shuffle_deck(deck):
+
+    for index in range(len(deck)):
+        random_number = randrange(0, len(deck))
+        card = deck.pop(index)
+        deck.insert(random_number, card)
+
+    return deck
+
+
 deck = generate_deck()
-print('Deck of cards', deck)
+shuffled_deck = shuffle_deck(deck)
+print('Shuffled deck of cards', shuffled_deck)
