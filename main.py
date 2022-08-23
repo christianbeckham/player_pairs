@@ -27,8 +27,10 @@ def calculate_pairs(cards):
     total_pairs = 0
 
     for card in cards:
-        if cards[card] >= 2:
+        if 2 <= cards[card] <= 3:
             total_pairs += 1
+        elif cards[card] > 3 and cards[card] % 2 == 0:
+            total_pairs += cards[card] / 2
 
     return total_pairs
 
@@ -63,6 +65,19 @@ def display_player_hands(players):
             f"\n{player['name']} \nHand: {player['cards']} \nNumber of Pairs: {player['pairs']}")
 
 
+def sort_by_highest_pairs(players):
+    players_list_copy = players[:]
+
+    for _ in range(len(players_list_copy)):
+        for index in range(len(players_list_copy) - 1):
+            if players_list_copy[index + 1]['pairs'] > players_list_copy[index]['pairs']:
+                temp = players_list_copy[index]
+                players_list_copy[index] = players_list_copy[index + 1]
+                players_list_copy[index + 1] = temp
+
+    return players_list_copy
+
+
 def start_game(number_of_players, rounds_to_play):
     print('\nWelcome to Player Pairs!')
     print('In this game each player will receive 5 cards.\nOnce each hand has been dealt, we will compare to see who has the most pairs!')
@@ -71,7 +86,7 @@ def start_game(number_of_players, rounds_to_play):
     shuffled_deck = shuffle_deck(deck)
     hands = deal_cards(shuffled_deck, number_of_players)
     display_player_hands(hands)
-    # check_hand_results(hands)
+    sorted_player_results = sort_by_highest_pairs(hands)
 
 
 start_game(4, 1)
