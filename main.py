@@ -78,6 +78,22 @@ def sort_by_highest_pairs(players):
     return players_list_copy
 
 
+def calculate_game_result(players):
+    final_results = [players[0]['name']]
+
+    for index in range(1, len(players)):
+        if players[0]['pairs'] == players[index]['pairs']:
+            final_results.append(players[index]['name'])
+
+    if len(final_results) == 1:
+        print(f"\n{final_results[0]} is the winner!")
+    else:
+        players_minus_last = ', '.join(final_results[:len(final_results) - 1])
+        last_player = final_results[-1]
+        print(
+            f"\nThere is a tie among {players_minus_last} and {last_player}.")
+
+
 def start_game(number_of_players, rounds_to_play):
     print('\nWelcome to Player Pairs!')
     print('In this game each player will receive 5 cards.\nOnce each hand has been dealt, we will compare to see who has the most pairs!')
@@ -86,7 +102,8 @@ def start_game(number_of_players, rounds_to_play):
     shuffled_deck = shuffle_deck(deck)
     hands = deal_cards(shuffled_deck, number_of_players)
     display_player_hands(hands)
-    sorted_player_results = sort_by_highest_pairs(hands)
+    sorted_players_by_pairs = sort_by_highest_pairs(hands)
+    calculate_game_result(sorted_players_by_pairs)
 
 
 start_game(4, 1)
