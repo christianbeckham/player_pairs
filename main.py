@@ -95,11 +95,11 @@ def calculate_game_result(players):
 
 
 def start_game():
-    print('\nWelcome to Player Pairs!')
+    print('\nWELCOME TO PLAYER PAIRS!')
     print('In this game each player will receive a hand of cards.\nOnce each hand has been dealt, we will compare to see who has the most pairs!')
 
-    number_of_players = int(input('\nEnter the number of players: '))
-    rounds_to_play = int(input('Enter the number of rounds to play: '))
+    number_of_players = int(input('\nEnter the number of PLAYERS: '))
+    rounds_to_play = int(input('Enter the number of ROUNDS to play: '))
 
     cards_per_player = 5
     cards_per_game = number_of_players * cards_per_player
